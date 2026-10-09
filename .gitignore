@@ -1,0 +1,22 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# virtual environments
+venv/
+venv*/
+
+# python / tool caches
+__pycache__/
+*.pyc
+.pytest_cache/
+.cph/
+
+# generated data
+chroma_db*/
+data/ocr_cache/
+
+# logs
+*.log
+data/docs/

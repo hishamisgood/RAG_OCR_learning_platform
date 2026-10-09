@@ -1,0 +1,30 @@
+# Core graph.  Pin this compatible LangChain 0.3 stack: unbounded constraints
+# can otherwise combine the older Chroma integration with newer incompatible
+# LangChain releases.
+langgraph==0.2.74
+langchain-core==0.3.76
+# local stack (free / open source)
+langchain-ollama==0.2.0
+langchain-google-genai==2.0.0
+# This project uses the persistent Chroma 0.x API.  Newer 1.x releases load a
+# Rust binding that crashes on this Windows machine; keep the integration and
+# database client on their compatible 0.x line.
+langchain-chroma==0.1.4
+langchain-huggingface==0.1.2
+langchain-text-splitters==0.3.8
+sentence-transformers>=3.0
+chromadb==0.5.23
+pypdf>=4.0
+PyMuPDF>=1.24
+Pillow>=10.0
+python-docx>=1.1
+python-dotenv>=1.0
+# app and optional local/cloud model providers
+streamlit>=1.57
+google-genai>=1.0
+ollama>=0.4
+# web-search fallback (pick one provider in .env)
+tavily-python>=0.5
+requests>=2.31
+# tests
+pytest>=8.0

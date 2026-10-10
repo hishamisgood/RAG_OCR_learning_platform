@@ -145,10 +145,10 @@ def load_file(s: Settings, path: Path, ocr=None, log: Progress = print) -> LoadR
         return out
 
     # PDF: use the text layer when it exists, OCR the page otherwise.
-    import fitz
+    import pymupdf
 
     fhash = None
-    with fitz.open(str(path)) as doc:
+    with pymupdf.open(str(path)) as doc:
         n = len(doc)
         texts = [p.get_text().strip() for p in doc]
         # A digital book (most pages have a real text layer) is not a scan: its figure and

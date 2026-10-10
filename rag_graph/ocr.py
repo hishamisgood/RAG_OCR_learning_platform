@@ -50,11 +50,11 @@ def file_hash(path: Path) -> str:
 
 def render_pdf_page(doc, index: int) -> bytes:
     """Render one page of an open PyMuPDF document to PNG, longest side <= MAX_SIDE."""
-    import fitz
+    import pymupdf
 
     page = doc[index]
     zoom = min(MAX_SIDE / max(page.rect.width, page.rect.height), 200 / 72)  # cap at ~200 dpi
-    return page.get_pixmap(matrix=fitz.Matrix(zoom, zoom)).tobytes("png")
+    return page.get_pixmap(matrix=pymupdf.Matrix(zoom, zoom)).tobytes("png")
 
 
 def load_image(path: Path) -> bytes:

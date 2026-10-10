@@ -261,7 +261,7 @@ with tab_quiz:
         c1, c2 = st.columns([4, 1])
         topic = c1.text_input("Topic", placeholder="e.g. Logic gates, AC circuits, Decision trees")
         n = c2.number_input("Questions", 1, 15, 5)
-        go = st.form_submit_button("✨ Generate quiz", use_container_width=True)
+        go = st.form_submit_button("✨ Generate quiz", width = 'stretch')
     if go and topic.strip():
         from rag_graph.study import make_quiz
 
@@ -304,7 +304,7 @@ with tab_lib:
     st.write("")
 
     if rows:
-        st.dataframe(rows, hide_index=True, use_container_width=True, column_config={
+        st.dataframe(rows, hide_index=True, width = 'stretch', column_config={
             "file": "File", "subject": "Subject",
             "chunks": st.column_config.ProgressColumn("Chunks", format="%d", min_value=0,
                                                       max_value=max(r["chunks"] for r in rows)),
@@ -355,13 +355,13 @@ with tab_lib:
                 left, right = st.columns(2)
                 with left:
                     if path.suffix.lower() == ".pdf":
-                        import fitz
+                        import pymupdf
 
-                        with fitz.open(str(path)) as doc:
+                        with pymupdf.open(str(path)) as doc:
                             img = render_pdf_page(doc, page - 1)
                     else:
                         img = load_image(path)
-                    st.image(img, caption=f"{path.name} · page {page}", use_container_width=True)
+                    st.image(img, caption=f"{path.name} · page {page}", width = 'stretch')
                 with right:
                     st.markdown(f"<span class='badge notes'>engine: {html.escape(hit.get('engine', '?'))}</span>",
                                 unsafe_allow_html=True)
